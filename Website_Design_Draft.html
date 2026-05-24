@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Website_Design_Draft.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="website-design-draft-diabetes-management-portal">Website Design Draft: Diabetes Management Portal</h1>
+<h2 id="1-vision--tone">1. Vision &amp; Tone</h2>
+<ul>
+<li><strong>Goal:</strong> Provide a mission-driven, accessible resource for diabetes management, inspired by a personal success story.</li>
+<li><strong>Tone:</strong> Personal, empowering, clear, and calm. &quot;No medical jargon, no spreading fear&quot;</li>
+<li><strong>Aesthetic:</strong> &quot;Soft&quot; and &quot;Appealing.&quot;</li>
+<li><strong>Color Palette:</strong>
+<ul>
+<li>Primary: Light Sky Blue (Backgrounds)</li>
+<li>Secondary: Navy Blue (Headings/Bold Text)</li>
+<li>Accent: Soft Teal (Interactions/Buttons)</li>
+</ul>
+</li>
+<li><strong>Motion:</strong> Soft transitions (0.8s fades) and scroll-triggered animations.</li>
+</ul>
+<h2 id="2-architecture-approach-2-the-portal">2. Architecture: Approach 2 (The Portal)</h2>
+<p>The site consists of a high-impact Landing Page that &quot;portals&quot; users into specific educational sub-pages via immersive transitions.</p>
+<h3 id="21-navigation">2.1 Navigation</h3>
+<p>2 Options:</p>
+<ul>
+<li><strong>Option 1 - If the text is short:</strong> Top Navigation Bar (Labels: &quot;Home&quot;, &quot;What is Diabetes?&quot;, &quot;Eating Guide&quot;, &quot;Tools&quot;).</li>
+<li><strong>Option 2 - If the text is long:</strong> Collapsible Table of Contents on the left side for long-form content pages (e.g., &quot;What is Diabetes&quot;).</li>
+</ul>
+<h2 id="3-page-specifications">3. Page Specifications</h2>
+<h3 id="31-home-page-landing">3.1 Home Page (Landing)</h3>
+<ul>
+<li><strong>Hero Section (Unique Centered Style):</strong>
+<ul>
+<li>Centered layout featuring Jackie's personal story transcript.</li>
+<li>Image integration (Jackie/Father or symbolic health imagery).</li>
+</ul>
+</li>
+<li><strong>Quote Section:</strong>
+<ul>
+<li>Transition piece: &quot;My dad was diagnosed... He chose a different path — and it worked.&quot;</li>
+<li><strong>Format:</strong> Bold text on a Light Blue background.</li>
+</ul>
+</li>
+<li><strong>Mission Section:</strong>
+<ul>
+<li>Text: &quot;I built this website because nobody should have to piece together that information alone...&quot;</li>
+<li>Visuals: 1-2 images representing the mission (health, control, support).</li>
+</ul>
+</li>
+<li><strong>The &quot;Start&quot; Transition:</strong>
+<ul>
+<li><strong>Action:</strong> Clicking the &quot;Start&quot; button triggers a full-page fade-out.</li>
+<li><strong>Effect:</strong> The home page fades to a solid color/white, and the &quot;What is Diabetes&quot; page fades in (emerges).</li>
+</ul>
+</li>
+</ul>
+<h3 id="32-what-is-diabetes-page-sub-page">3.2 &quot;What is Diabetes&quot; Page (Sub-page)</h3>
+<ul>
+<li><strong>Statistics Strip:</strong>
+<ul>
+<li><strong>Animated Numbers:</strong> Counters for &quot;&gt;500M people worldwide,&quot; &quot;100M unaware,&quot; etc.</li>
+<li><strong>Data Visuals:</strong> Dynamic icons or small charts that animate on scroll.</li>
+</ul>
+</li>
+<li><strong>Content Layout:</strong>
+<ul>
+<li>Background changes color subtly as the user scrolls through sections.</li>
+<li>Integration of &quot;Windows Transition&quot; style where content enters the viewport with soft motion.</li>
+</ul>
+</li>
+</ul>
+<h3 id="33-tools-section-ongoing">3.3 Tools Section (Ongoing)</h3>
+<ul>
+<li><strong>Features:</strong>
+<ul>
+<li>Calendar</li>
+<li>Clinics Contact</li>
+<li>Meal Tracker</li>
+<li>Community Searching</li>
+<li>Prescription Tracking</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-technical-requirements">4. Technical Requirements</h2>
+<ul>
+<li><strong>Transitions:</strong> Use CSS/JS for scroll-triggered background shifts and full-page fade transitions.</li>
+<li><strong>Responsiveness:</strong> Ensure the centered hero and top-nav remain legible on mobile.</li>
+<li><strong>Accessibility:</strong> High contrast for Navy Blue text on Light Blue backgrounds.</li>
+</ul>
+<h2 id="5-success-criteria">5. Success Criteria</h2>
+<ul>
+<li>User feels a personal connection through the story.</li>
+<li>Information is delivered without overwhelming medical complexity.</li>
+<li>Navigation is intuitive, moving from &quot;The Story&quot; to &quot;The Tools.&quot;</li>
+</ul>
+
+</body>
+</html>
